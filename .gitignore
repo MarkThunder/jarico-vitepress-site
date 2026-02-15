@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# VitePress build output
+.vitepress/dist/
+
+# VitePress cache
+.vitepress/cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
