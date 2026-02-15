@@ -2,6 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  // GitHub Pages 项目站点需要设置 base 为仓库名
+  base: "/jarico-vitepress-site/",
   title: "Jarico",
   description: "Jarico site",
   themeConfig: {
