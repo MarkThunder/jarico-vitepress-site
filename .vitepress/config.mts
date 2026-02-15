@@ -1,8 +1,15 @@
 import { defineConfig } from 'vitepress'
-import sidebar from './sidebar'
+import fs from 'node:fs'
+import path from 'node:path'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default defineConfig(async () => {
+  const sidebarPath = path.resolve(__dirname, 'sidebar.mts')
+  const sidebar = fs.existsSync(sidebarPath)
+    ? (await import('./sidebar.mts')).default
+    : []
+
+  return {
   // GitHub Pages 项目站点需要设置 base 为仓库名
   base: "/jarico-vitepress-site/",
   // 统一内容目录，配合脚本自动生成侧边栏
@@ -25,5 +32,6 @@ export default defineConfig({
     footer: {
       copyright: "Copyright © 2026 Jarico"
     }
+  }
   }
 })
