@@ -10,6 +10,9 @@ export default defineConfig({
   title: "Jarico",
   description: "Jarico site",
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
