@@ -11,7 +11,7 @@ hero:
       text: 自定义文档
       link: /custom
     - theme: alt
-      text: 未完待续
+      text: 我的随笔
       link: /tobecontinue
 
 features:

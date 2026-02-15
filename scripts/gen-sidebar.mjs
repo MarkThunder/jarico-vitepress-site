@@ -55,6 +55,32 @@ function toText(relPath, title) {
   return title || path.basename(relPath, '.md')
 }
 
+function addToTree(tree, categoryPath, item) {
+  const parts = categoryPath.split('/').map((p) => p.trim()).filter(Boolean)
+  let node = tree
+  for (const part of parts) {
+    if (!node.children.has(part)) {
+      node.children.set(part, { text: part, children: new Map(), items: [] })
+    }
+    node = node.children.get(part)
+  }
+  node.items.push(item)
+}
+
+function buildSidebarFromTree(node) {
+  const sections = []
+  const children = Array.from(node.children.values()).sort((a, b) =>
+    a.text.localeCompare(b.text, 'zh-Hans-CN')
+  )
+  for (const child of children) {
+    const items = child.items.map(({ text, link }) => ({ text, link }))
+    const nested = buildSidebarFromTree(child)
+    const mergedItems = items.concat(nested)
+    sections.push({ text: child.text, items: mergedItems })
+  }
+  return sections
+}
+
 async function main() {
   const files = await walk(contentDir)
   const items = []
@@ -81,25 +107,24 @@ async function main() {
     })
   }
 
-  const groups = new Map()
+  const tree = { children: new Map(), items: [] }
   for (const item of items) {
-    if (!groups.has(item.category)) groups.set(item.category, [])
-    groups.get(item.category).push(item)
+    addToTree(tree, item.category, item)
   }
 
-  const sidebar = Array.from(groups.entries())
-    .sort(([a], [b]) => a.localeCompare(b, 'zh-Hans-CN'))
-    .map(([category, groupItems]) => {
-      groupItems.sort((a, b) => {
+  function sortTree(node) {
+    for (const child of node.children.values()) {
+      child.items.sort((a, b) => {
         if (a.order !== b.order) return a.order - b.order
         if (a.date !== b.date) return b.date.localeCompare(a.date)
         return a.text.localeCompare(b.text, 'zh-Hans-CN')
       })
-      return {
-        text: category,
-        items: groupItems.map(({ text, link }) => ({ text, link })),
-      }
-    })
+      sortTree(child)
+    }
+  }
+  sortTree(tree)
+
+  const sidebar = buildSidebarFromTree(tree)
 
   const content = `export default ${JSON.stringify(sidebar, null, 2)}\n`
   await fs.writeFile(outputFile, content, 'utf8')
