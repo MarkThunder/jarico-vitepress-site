@@ -28,7 +28,7 @@ export default defineConfig({
     ],
 
     footer: {
-      copyright: "copyright@ 2026 by Jarico"
+      copyright: "Copyright © 2026 Jarico"
     }
   }
 })

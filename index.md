@@ -4,22 +4,18 @@ layout: home
 
 hero:
   name: "Jarico"
-  text: "Power by VitePress"
+  text: "Powered by VitePress"
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 自定义文档
+      link: /custom
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 未完待续
+      link: /tobecontinue
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 技术
+    details: 一个记录技术的站点
 ---
 
