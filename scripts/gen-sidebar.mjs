@@ -3,7 +3,7 @@ import path from 'node:path'
 
 const repoRoot = path.resolve(process.cwd())
 const contentDir = path.join(repoRoot, 'content')
-const outputFile = path.join(repoRoot, '.vitepress', 'sidebar.mts')
+const outputFile = path.join(repoRoot, '.vitepress', 'sidebar.ts')
 
 function parseFrontmatter(markdown) {
   if (!markdown.startsWith('---')) return {}

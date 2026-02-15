@@ -1,5 +1,14 @@
 export default [
   {
+    "text": "测试",
+    "items": [
+      {
+        "text": "一个测试",
+        "link": "/test"
+      }
+    ]
+  },
+  {
     "text": "说明",
     "items": [
       {
