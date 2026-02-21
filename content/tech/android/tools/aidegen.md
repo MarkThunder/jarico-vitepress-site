@@ -13,13 +13,12 @@ date: 2026-02-15
 
 ```bash
 source build/envsetup.sh
-lunch <target>
 ```
 
 建议：
 
 ```bash
-lunch aosp_cf_x86_64_phone-userdebug
+lunch sdk_phone_x86_64-userdebug
 ```
 
 ------
