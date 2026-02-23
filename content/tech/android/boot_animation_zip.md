@@ -4,8 +4,7 @@ category: 技术/Android/Framework
 order: 1
 date: 2026-02-23
 ---
-
-### 预制步骤
+## 预制步骤
 
  Bootanimation.zip 编进 system/media 的步骤（AOSP 13 / sdk_phone_x86_64）
 
