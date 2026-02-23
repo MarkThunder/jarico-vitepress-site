@@ -1,5 +1,5 @@
 ---
-title: 开机动画 .zip 预制
+title: 开机动画 zip 预制
 category: 技术/Android/Framework
 order: 1
 date: 2026-02-23
@@ -48,7 +48,7 @@ date: 2026-02-23
 
   字段含义（标准 BootAnimation 约定）
 
-  - 行格式：<type> <count> <pause> <folder>
+  - 行格式：
   - type：p=普通播放；c=播放并在支持时叠加时钟（你这里全是 c）
   - count：播放次数，0 表示无限循环
   - pause：每次播放结束后额外停顿的帧数（按 fps 换算为秒）
